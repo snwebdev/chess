@@ -4,8 +4,9 @@ var getPositionPiecePositionFromPiece = require('./getPositionPiecePositionFromP
 var squareOccupied = require('./squareOccupied');
 var getLesserColumn = require('./getLesserColumn');
 var getGreaterColumn = require('./getGreaterColumn');
+var getPieceByPosition = require('./getPieceByPosition');
 
-module.exports = function legalMovePawn(board, from, to) {
+module.exports = function legalMovePawn(board, colour, from, to) {
     var fromPosition = getColumnAndRowFromSquareName(from);
     var toPosition = getColumnAndRowFromSquareName(to);
     var colour = getPieceColourFromPosition(board, fromPosition);
@@ -14,13 +15,13 @@ module.exports = function legalMovePawn(board, from, to) {
 
     // move one forward
     if (
-        colour === "White" &&
+        colour === "white" &&
         toPosition.column === fromPosition.column &&
         toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 1]
     ) {
         return (!squareOccupied(board, toPosition.column, toPosition.row));
     }
-    if (colour === "Black" &&
+    if (colour === "black" &&
         toPosition.column === fromPosition.column &&
         toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) -1]
     ) {
@@ -30,16 +31,18 @@ module.exports = function legalMovePawn(board, from, to) {
 
     // move two forward
     if (
-        colour === "White" &&
+        colour === "white" &&
         toPosition.column === fromPosition.column &&
-        toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 2]
+        toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 2] &&
+        fromPosition.row === "2"
     ) {
         return (!squareOccupied(board, toPosition.column, toPosition.row) &&
             !squareOccupied(board, toPosition.column, toPosition.row -1));
     }
-    if (colour === "Black" &&
+    if (colour === "black" &&
         toPosition.column === fromPosition.column &&
-        toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) -2]
+        toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) -2] &&
+        fromPosition.row === "7"
     ) {
         return (!squareOccupied(board, toPosition.column, toPosition.row) &&
             !squareOccupied(board, toPosition.column, toPosition.row));
@@ -47,34 +50,34 @@ module.exports = function legalMovePawn(board, from, to) {
 
     // take in lesser column
     if (
-        colour === "White" &&
+        colour === "white" &&
         toPosition.column === getLesserColumn(board,fromPosition.column) &&
         toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 1]
     )
     {
-        return (!squareOccupied(board, toPosition.column, toPosition.row));
+        return (getPieceByPosition(board, toPosition).colour === "black");
     }
-    if (colour === "Black" &&
+    if (colour === "black" &&
         toPosition.column === getLesserColumn(board,fromPosition.column) &&
         toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) -1]
     ) {
-        return (!squareOccupied(board, toPosition.column, toPosition.row)) ;
+        return (getPieceByPosition(board, toPosition).colour === "white");
     }
 
     // take in greater column
     if (
-        colour === "White" &&
+        colour === "white" &&
         toPosition.column === getGreaterColumn(board,fromPosition.column) &&
         toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 1]
     )
     {
-        return (!squareOccupied(board, toPosition.column, toPosition.row));
+        return (getPieceByPosition(board, toPosition).colour === "black");
     }
-    if (colour === "Black" &&
+    if (colour === "black" &&
         toPosition.column === getGreaterColumn(board,fromPosition.column) &&
         toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) -1]
     ) {
-        return (!squareOccupied(board, toPosition.column, toPosition.row)) ;
+        return (getPieceByPosition(board, toPosition).colour === "white");
     }
 
     //wasn't any of the legal moves

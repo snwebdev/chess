@@ -1,179 +1,176 @@
 module.exports = [
     {
-        row: "4",
-        column: "A",
-        colour: "White",
-        denomination: "Rook",
+        row: "1",
+        column: "a",
+        colour: "white",
+        denomination: "rook",
         castled: false
     },
 
     {
         row: "1",
-        column: "B",
-        colour: "White",
-        denomination: "Knight"
+        column: "b",
+        colour: "white",
+        denomination: "knight"
     },
 
     {
         row: "1",
-        column: "C",
-        colour: "White",
+        column: "c",
+        colour: "white",
+        denomination: "bishop"
+    },
+
+    {
+        row: "1",
+        column: "d",
+        colour: "white",
+        denomination: "queen"
+    },
+
+    {
+        row: "1",
+        column: "e",
+        colour: "white",
+        denomination: "king",
+        castled: false
+    },
+
+    {
+        row: "1",
+        column: "f",
+        colour: "white",
+        denomination: "bishop"
+    },
+
+    {
+        row: "1",
+        column: "g",
+        colour: "white",
+        denomination: "knight"
+    },
+
+    {
+        row: "1",
+        column: "h",
+        colour: "white",
+        denomination: "rook",
+        castled: false
+    },
+
+    {
+        row: "2",
+        column: "a",
+        colour: "white",
+        denomination: "pawn"
+    },
+
+    {
+        row: "2",
+        column: "b",
+        colour: "white",
+        denomination: "pawn"
+    },
+
+    {
+        row: "2",
+        column: "c",
+        colour: "white",
+        denomination: "pawn"
+    },
+
+    {
+        row: "2",
+        column: "d",
+        colour: "white",
+        denomination: "pawn"
+    },
+
+    {
+        row: "2",
+        column: "e",
+        colour: "white",
+        denomination: "pawn"
+    },
+
+    {
+        row: "2",
+        column: "f",
+        colour: "white",
+        denomination: "pawn"
+    },
+
+    {
+        row: "2",
+        column: "g",
+        colour: "white",
+        denomination: "pawn"
+    },
+
+    {
+        row: "2",
+        column: "h",
+        colour: "white",
+        denomination: "pawn"
+    },
+
+
+    {
+        row: "8",
+        column: "a",
+        colour: "black",
+        denomination: "Rook",
+        castled: false
+
+    },
+
+    {
+        row: "8",
+        column: "b",
+        colour: "black",
+        denomination: "knight"
+    },
+
+    {
+        row: "8",
+        column: "c",
+        colour: "black",
         denomination: "Bishop"
     },
 
     {
-        row: "1",
-        column: "D",
-        colour: "White",
+        row: "8",
+        column: "d",
+        colour: "black",
         denomination: "Queen"
     },
 
     {
-        row: "1",
-        column: "E",
-        colour: "White",
+        row: "8",
+        column: "e",
+        colour: "black",
         denomination: "King",
         castled: false
     },
 
     {
-        row: "1",
-        column: "F",
-        colour: "White",
-        denomination: "Bishop"
-    },
-
-    {
-        row: "1",
-        column:
-            "G",
-        colour:
-            "White",
-        denomination:
-            "Knight"
-    },
-
-    {
-        row: "1",
-        column: "H",
-        colour: "White",
-        denomination: "Rook",
-        castled: false
-    },
-
-    {
-        row: "2",
-        column: "A",
-        colour: "White",
-        denomination: "pawn"
-    },
-
-    {
-        row: "2",
-        column: "B",
-        colour: "White",
-        denomination: "pawn"
-    },
-
-    {
-        row: "2",
-        column: "C",
-        colour: "White",
-        denomination: "pawn"
-    },
-
-    {
-        row: "2",
-        column: "D",
-        colour: "White",
-        denomination: "pawn"
-    },
-
-    {
-        row: "2",
-        column: "E",
-        colour: "White",
-        denomination: "pawn"
-    },
-
-    {
-        row: "2",
-        column: "F",
-        colour: "White",
-        denomination: "pawn"
-    },
-
-    {
-        row: "2",
-        column: "G",
-        colour: "White",
-        denomination: "pawn"
-    },
-
-    {
-        row: "2",
-        column: "H",
-        colour: "White",
-        denomination: "pawn"
-    },
-
-
-    {
         row: "8",
-        column: "A",
-        colour: "Black",
-        denomination: "Rook",
-        castled: false
-
-    },
-
-    {
-        row: "8",
-        column: "B",
-        colour: "Black",
-        denomination: "Knight"
-    },
-
-    {
-        row: "8",
-        column: "C",
-        colour: "Black",
+        column: "f",
+        colour: "black",
         denomination: "Bishop"
     },
 
     {
         row: "8",
-        column: "D",
-        colour: "Black",
-        denomination: "Queen"
+        column: "g",
+        colour: "black",
+        denomination: "knight"
     },
 
     {
         row: "8",
-        column: "E",
-        colour: "Black",
-        denomination: "King",
-        castled: false
-    },
-
-    {
-        row: "8",
-        column: "F",
-        colour: "Black",
-        denomination: "Bishop"
-    },
-
-    {
-        row: "8",
-        column: "G",
-        colour: "Black",
-        denomination: "Knight"
-    },
-
-    {
-        row: "8",
-        column: "H",
-        colour: "Black",
+        column: "h",
+        colour: "black",
         denomination: "Rook",
         castled: false
     },
@@ -181,58 +178,58 @@ module.exports = [
 
     {
         row: "7",
-        column: "A",
-        colour: "Black",
+        column: "a",
+        colour: "black",
         denomination: "pawn"
     },
 
 
     {
         row: "7",
-        column: "B",
-        colour: "Black",
+        column: "b",
+        colour: "black",
         denomination: "pawn"
     },
 
     {
         row: "7",
-        column: "C",
-        colour: "Black",
+        column: "c",
+        colour: "black",
         denomination: "pawn"
     },
 
     {
         row: "7",
-        column: "D",
-        colour: "Black",
+        column: "d",
+        colour: "black",
         denomination: "pawn"
     },
 
     {
         row: "7",
-        column: "E",
-        colour: "Black",
+        column: "e",
+        colour: "black",
         denomination: "pawn"
     },
 
     {
         row: "7",
-        column: "F",
-        colour: "Black",
+        column: "f",
+        colour: "black",
         denomination: "pawn"
     },
 
     {
         row: "7",
-        column: "G",
-        colour: "Black",
+        column: "g",
+        colour: "black",
         denomination: "pawn"
     },
 
     {
         row: "7",
-        column: "H",
-        colour: "Black",
+        column: "h",
+        colour: "black",
         denomination: "pawn"
     }
 ]
