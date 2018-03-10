@@ -13,6 +13,9 @@ module.exports = function legalMove(board, colour, from, to){
     //if there's no piece on that square
     if (piece === -1) return false;
 
+    //if piece moving to own square
+    if (from === to) return false;
+
     //does piece belong to player?
     if (piece.colour !== colour) return -1;
 

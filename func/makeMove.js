@@ -2,7 +2,7 @@ var squareOccupiedByPosition = require('./squareOccupiedByPosition');
 var getPieceByPosition = require('./getPieceByPosition');
 var getPositionFromSquareName = require('./getPositionFromSquareName');
 
-var piece
+var piece;
 
 module.exports = function makeMove(board, colour, from, to) {
     var fromPosition = getPositionFromSquareName(from);
@@ -18,6 +18,6 @@ module.exports = function makeMove(board, colour, from, to) {
     piece.column = toPosition.column;
     piece.row = toPosition.row;
 
-
+//console.log("makemove board="+JSON.stringify(board));
     return (board);
 }

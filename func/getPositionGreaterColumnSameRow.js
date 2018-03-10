@@ -1,4 +1,4 @@
 module.exports = function(board, position){
-    var index = board.rows.indexOf(position.column)  + 1;
-    return {column: position.column, row: board.rows[index]}
+    var index = board.columns.indexOf(position.column)  + 1;
+    return {column: board.columns[index], row: position.row}
 }

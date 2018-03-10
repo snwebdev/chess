@@ -1,0 +1,9 @@
+module.exports = function(board){
+    var positions = [];
+    board.rows.forEach((row) => {
+        board.columns.forEach((column) => {
+            positions.push({column: column, row, row});
+        })
+    })
+    return positions
+}
