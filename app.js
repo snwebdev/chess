@@ -2,9 +2,11 @@ var express = require('express');
 var exphbs  = require('express-handlebars');
 var makeMove = require('./func/makeMove');
 var newGame= require('./func/newGame');
+var newGame2= require('./func/newGame2');
 var bodyParser = require('body-parser');
-var legalMove = require('./func/legalMove');
+var legalMove = require('./func/couldMove');
 var randomMove = require('./func/randomMove');
+var submitMove = require('./func/submitMove');
 var jsonParser = bodyParser.json;
 
 var app = express();
@@ -27,11 +29,12 @@ app.get('/about', function (req, res) {
 app.post('/submitmove', function(req, res){
     //console.log(req.body.to);
     //console.log(makeMove(req.body.board, req.body.board.toPlay, req.body.from, req.body.to));
-    res.json(makeMove(req.body.board, req.body.board.toPlay, req.body.from, req.body.to));
+    //res.json(makeMove(req.body.board, req.body.board.toPlay, req.body.from, req.body.to));
+    res.json(submitMove(req.body.board, req.body.board.toPlay, req.body.from, req.body.to));
 });
 app.post('/getrandommove', function(req, res){
     //console.log(req.body.to);
-    console.log(randomMove(req.body.board, "black"));
+    //console.log(randomMove(req.body.board, "black"));
     //console.log(makeMove(req.body.board, req.body.board.toPlay, req.body.from, req.body.to));
     res.json(randomMove(req.body.board, "black"));
 });

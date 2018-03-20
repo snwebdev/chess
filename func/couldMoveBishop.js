@@ -21,11 +21,11 @@ module.exports = function legalMoveBishop(board, colour, from, to) {
 
     var found = false;
 
-    //are from and to on a diagonal
+    //are from and to on up diagonal
     for (var i = 0; i < up.length; i++) {
         if(up[i].column === toPosition.column && up[i].row === toPosition.row) found = true;
     }
-
+    //are from and to on down diagonal
     for (var i = 0; i < down.length; i++) {
         if(down[i].column === toPosition.column && down[i].row === toPosition.row) found = true;
     }
@@ -37,7 +37,7 @@ module.exports = function legalMoveBishop(board, colour, from, to) {
 
     //target occupied by own piece
     if(squareOccupiedByPosition(board, toPosition) &&
-    getPieceByPosition(board, toPosition).colour === colour){
+        getPieceByPosition(board, toPosition).colour === colour){
         return false;
     }
 

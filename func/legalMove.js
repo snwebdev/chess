@@ -1,38 +1,9 @@
-var getPiece = require('./getPiece');
-var legalMovePawn = require('./legalMovePawn');
-var legalMoveRook = require('./legalMoveRook');
-var legalMoveBishop = require('./legalMoveBishop');
-var legalMoveQueen = require('./legalMoveQueen');
-var legalMoveKing = require('./legalMoveKing');
-var legalMoveKnight = require('./legalMoveKnight');
+var couldMove = require('./couldMove');
+var movePutsMoverInCheck = require('./movePutsMoverInCheck');
 
-module.exports = function legalMove(board, colour, from, to){
+module.exports = function(board, colour, from, to){
+    return (couldMove(board, colour, from, to)
+         && !movePutsMoverInCheck(board, colour, from, to)
+    );
 
-    var piece = getPiece(board, from);
-
-    //if there's no piece on that square
-    if (piece === -1) return false;
-
-    //if piece moving to own square
-    if (from === to) return false;
-
-    //does piece belong to player?
-    if (piece.colour !== colour) return -1;
-
-
-    switch(piece.denomination){
-        case "pawn":
-            return legalMovePawn(board, colour, from, to);
-        case "rook":
-            return legalMoveRook(board, colour, from, to);
-        case "bishop":
-            return legalMoveBishop(board, colour, from, to);
-        case "queen":
-            return legalMoveQueen(board, colour, from, to);
-        case "king":
-            return legalMoveKing(board, colour, from, to);
-        case "knight":
-            return legalMoveKnight(board, colour, from, to);
-    }
-    return denomination;
 }

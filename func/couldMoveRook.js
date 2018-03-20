@@ -21,7 +21,7 @@ module.exports = function (board, colour, from, to) {
 
     //from and to need to share a column or a row
     if (!(fromPosition.column === toPosition.column ||
-            fromPosition.row === toPosition.row)) return -1;
+            fromPosition.row === toPosition.row)) return false;
 
     var squaresToCheck = [];
 
@@ -67,16 +67,16 @@ module.exports = function (board, colour, from, to) {
 
     //fails if intervieing squares are occupied
     if (checkSquaresEmptyByPosition(board, squaresToCheck) === false) {
-        return -1;
+        return false;
     }
 
     //fails if to square occupied by own piece
     if (squareOccupied(board, toPosition.column, toPosition.row)) {
         var piece = getPieceByPosition(board, toPosition);
-        if (piece.colour === colour) return -1;
+        if (piece.colour === colour) return false;
     }
 
 
 
-    return "move ok";
+    return true;
 }
