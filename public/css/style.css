@@ -25,6 +25,9 @@ body {
 td {
     text-align: center;
 }
+#notation{
+    margin-top: 42px;
+}
 
 
 .edge {
@@ -37,66 +40,91 @@ td {
 .black{
     background-color:#D9D3D3;
 }
-
-#white-rook{
-    width: 45px;
-    height: 45px;
-    background: url(../img/pieces.svg) -180px 0px;
+.from{
+    /*background-color:green;*/
 }
 
-#white-pawn{
+.to{
+    /*background-color:yellow;*/
+}
+
+.hover-off{
+    pointer-events: none;
+}
+
+#promo{
+    visibility: hidden;
+    width: 180px;
+    margin: auto;
+}
+.promo:hover{
+    background-color: #6995E6;
+}
+
+.white-rook{
+    width: 45px;
+    height: 45px;
+    background: url(../img/pieces.svg)-180px 0px; ;
+}
+
+.white-pawn{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) -225px 0px;
 }
-#white-knight{
+.white-knight{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) -135px 0px;
 }
-#white-bishop{
+.white-bishop{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) -90px 0px;
 }
-#white-queen{
+.white-queen{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) -45px 0px;
 }
-#white-king{
+.white-queen{
+    width: 45px;
+    height: 45px;
+    background: url(../img/pieces.svg) -45px 0px;
+}
+.white-king{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) 0px 0px;
 }
 
-#black-rook{
+.black-rook{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) -180px -45px;
 }
 
-#black-pawn{
+.black-pawn{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) -225px -45px;
 }
-#black-knight{
+.black-knight{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) -135px -45px;
 }
-#black-bishop{
+.black-bishop{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) -90px -45px;
 }
-#black-queen{
+.black-queen{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) -45px -45px;
 }
-#black-king{
+.black-king{
     width: 45px;
     height: 45px;
     background: url(../img/pieces.svg) 0px -45px;

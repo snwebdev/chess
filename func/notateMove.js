@@ -1,9 +1,11 @@
 var getPieceByPosition = require('./getPieceByPosition');
 var squareOccupied = require('./squareOccupied');
 var getLastMoveNumber = require('./notate/getLastMoveNumber');
+var moveChecksOpponent = require('./moveChecksOpponent');
+
 
 module.exports = function (board, fromPosition, toPosition) {
-    console.log("top of notate move board.moves="+board.moves);
+    //console.log("top of notate move board.moves="+board.moves);
     var piece = getPieceByPosition(board, fromPosition);
     var colour = piece.colour;
     var denomination;
@@ -31,12 +33,18 @@ module.exports = function (board, fromPosition, toPosition) {
     var colour = piece.colour;
 
     var action;
+    var from = "";
 
     //if it takes
     if (squareOccupied(board, toPosition.column, toPosition.row)){
+        if(denomination === ""){
+            denomination = piece.column;
+        } else{
+        }
+
         action = "x";
     }else{
-        action = "-"
+        action = ""
     }
 
     var lastMoveNumber = getLastMoveNumber(board.moves);
@@ -55,27 +63,40 @@ module.exports = function (board, fromPosition, toPosition) {
         dot = ".";
     }
 
-    console.log("moveNumber ="+ moveNumber);
-    console.log("dot ="+ dot);
-    console.log("board.moves="+board.moves);
-    console.log("lastMoveNumber ="+ lastMoveNumber);
-    console.log("lastMoveNumber is intiger ="+ Number.isInteger(lastMoveNumber));
-    console.log(lastMoveNumber > 0)
+    var check = "";
+    if (moveChecksOpponent(board, colour, fromPosition, toPosition)){
+        check = "+";
+    }
 
 
-    console.log("to =" + toPosition.column+toPosition.row);
-
-
-    console.log("notated move = "+
-     moveNumber +
-    dot+
-    denomination+
-    toPosition.column+toPosition.row);
+console.log("Action="+action);
+    // console.log("moveNumber ="+ moveNumber);
+    // console.log("dot ="+ dot);
+    // console.log("board.moves="+board.moves);
+    // console.log("lastMoveNumber ="+ lastMoveNumber);
+    // console.log("lastMoveNumber is intiger ="+ Number.isInteger(lastMoveNumber));
+    // console.log(lastMoveNumber > 0)
+    //
+    //
+    // console.log("to =" + toPosition.column+toPosition.row);
+    //
+    //
+    // console.log("notated move = "+
+    //  moveNumber +
+    // dot+
+    // denomination+
+    // toPosition.column+toPosition.row);
 
      // board.moves += moveNumber+dot+denomination+toPosition.column+toPosition.row;
-    console.log("board.meves before"+board.moves);
-    board.moves += moveNumber + dot+denomination+toPosition.column+toPosition.row;
-    console.log("board.meves after"+board.moves);
+    //console.log("board.meves before"+board.moves);
+    board.moves +=
+        moveNumber
+        + dot
+        + denomination
+        + action
+        + toPosition.column+toPosition.row
+    + check;
+    //console.log("board.meves after"+board.moves);
 
     // board.moves += "mince";
     return;

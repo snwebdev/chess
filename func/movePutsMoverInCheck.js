@@ -1,6 +1,9 @@
 var getPositionFromSquareName = require('./getPositionFromSquareName');
 var couldMove = require('./couldMove');
 var getColumnAndRowFromSquareName = require('./getColumnAndRowFromSquareName');
+var squareOccupiedByPosition = require('./squareOccupiedByPosition');
+var getPieceByPosition = require('./getPieceByPosition');
+
 
 var testBoard = {};
 
@@ -9,6 +12,7 @@ module.exports = function (board, colour, from, to) {
 
     var fromPosition = getPositionFromSquareName(from);
     var toPosition = getPositionFromSquareName(to);
+    var movingPiece;
 
     testBoard.pieces = [];
     testBoard.rows = board.rows;
@@ -20,24 +24,35 @@ module.exports = function (board, colour, from, to) {
             row: piece.row,
             denomination: piece.denomination
         };
-        if (piece.column === fromPosition.column && piece.row === fromPosition.row) {
-            newPiece.column = toPosition.column;
-            newPiece.row = toPosition.row;
-
-
-        }
         testBoard.pieces.push(newPiece);
-    })
+    });
 
-    var fromPosition = getPositionFromSquareName(from);
-    var toPosition = getPositionFromSquareName(to);
+    movingPiece = getPieceByPosition(testBoard, fromPosition);
+
+        //if to position occupied remove occupant
+        if (squareOccupiedByPosition(testBoard, toPosition)){
+            var piece = getPieceByPosition(testBoard, toPosition);
+            piece.column = -1;
+            piece.row = -1;
+        }
+
+        //move the moving piece
+            movingPiece.column = toPosition.column;
+            movingPiece.row = toPosition.row;
+
+
+
+
+
+
+
 
     //get positon of colour's king
     var kingPosition = {};
-    for (var i = 0; i < board.pieces.length; i++) {
-        if (board.pieces[i].denomination === "king" &&
-            board.pieces[i].colour === colour) {
-            kingPosition = {column: board.pieces[i].column, row: board.pieces[i].row}
+    for (var i = 0; i < testBoard.pieces.length; i++) {
+        if (testBoard.pieces[i].denomination === "king" &&
+            testBoard.pieces[i].colour === colour) {
+            kingPosition = {column: testBoard.pieces[i].column, row: testBoard.pieces[i].row}
         }
     }
     //if king position = from then change to to
@@ -54,7 +69,7 @@ module.exports = function (board, colour, from, to) {
     for (var i = 0; i < testBoard.pieces.length; i++) {
         var piece = testBoard.pieces[i];
         if (
-            piece.colour === opColour &&
+            piece.colour === opColour && piece.row > -1 &&
             // legalMove(testBoard, opColour, piece.column + piece.row, kingPosition.column + kingPosition.row)
             couldMove(testBoard, opColour, piece.column + piece.row, kingPosition.column + kingPosition.row)
         ) {

@@ -1,3 +1,5 @@
+// from and to are squarenames
+
 var couldMove = require('./couldMove');
 var movePutsMoverInCheck = require('./movePutsMoverInCheck');
 

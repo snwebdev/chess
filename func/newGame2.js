@@ -1,35 +1,48 @@
 module.exports = {
+    moves: "1. e4 d6",
     toPlay: "white",
     columns: ["a", "b", "c", "d", "e", "f", "g", "h"],
     rows: ["1", "2", "3", "4", "5", "6", "7", "8"],
     pieces: [
         {
-            row: "5",
+            row: "1",
+            column: "h",
+            colour: "white",
+            denomination: "rook",
+            mayYetCastle: true
+        },
+
+        {
+            row: "1",
             column: "e",
             colour: "white",
             denomination: "king",
-            castled: false
+            mayYetCastle: true
+
         },
+
         {
-            row: "3",
-            column: "f",
+            row: "8",
+            column: "c",
             colour: "black",
             denomination: "king",
-            castled: false
+            mayYetCastle: true
         },
+
         {
             row: "4",
-            column: "f",
-            colour: "white",
-            denomination: "pawn",
-            castled: false
+            column: "d",
+            colour: "black",
+            denomination: "queen"
+
         },
         {
-            row: "5",
-            column: "g",
-            colour: "black",
-            denomination: "pawn",
-            castled: false
+            row: "1",
+            column: "a",
+            colour: "white",
+            denomination: "rook",
+            mayYetCastle: true
         }
+
     ]
 }

@@ -42,6 +42,8 @@ module.exports = function legalMoveBishop(board, colour, from, to) {
     }
 
 
+
+
     return true
 
 

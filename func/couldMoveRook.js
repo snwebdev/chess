@@ -41,7 +41,7 @@ module.exports = function (board, colour, from, to) {
         var position = getPositionSameColumnLesserRow(board, fromPosition);
         while (position.row !== toPosition.row) {
             squaresToCheck.push(position);
-            position = getPositionSameColumnGreaterRow(board, position);
+            position = getPositionSameColumnLesserRow(board, position);
         }
     }
 

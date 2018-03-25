@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var legalMove = require('./func/couldMove');
 var randomMove = require('./func/randomMove');
 var submitMove = require('./func/submitMove');
+var promotePawn = require('./func/promotePawn');
 var jsonParser = bodyParser.json;
 
 var app = express();
@@ -38,8 +39,14 @@ app.post('/getrandommove', function(req, res){
     //console.log(makeMove(req.body.board, req.body.board.toPlay, req.body.from, req.body.to));
     res.json(randomMove(req.body.board, "black"));
 });
+app.post('/promote', function(req, res){
+    //console.log(req.body.to);
+    //console.log(randomMove(req.body.board, "black"));
+    //console.log(makeMove(req.body.board, req.body.board.toPlay, req.body.from, req.body.to));
+    res.json(promotePawn(req.body.board, req.body.pawnPosition, req.body.denomination));
+});
 app.get('/newgame', function(req, res){
-    res.json(newGame);
+    res.json(newGame2);
 })
 
 
