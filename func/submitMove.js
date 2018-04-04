@@ -4,7 +4,6 @@ var makeMove = require('./makeMove');
 
 module.exports = function(board, colour, from, to) {
 
-
     if( legalMove(board, colour, from, to)
     ){
         console.log("legal move from "+from+" to "+to);
@@ -12,6 +11,7 @@ module.exports = function(board, colour, from, to) {
         return makeMove(board, colour, from, to);
 
     } else{
+        console.log(`${from} to ${to} is illegal`);
         return false;
     }
 

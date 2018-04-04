@@ -1,4 +1,5 @@
 module.exports = {
+    state: "started",
     moves: "",
     toPlay: "white",
     columns: ["a", "b", "c", "d", "e", "f", "g", "h"],
@@ -9,7 +10,7 @@ module.exports = {
             column: "a",
             colour: "white",
             denomination: "rook",
-            castled: false
+            mayYetCastle: true
         },
 
         {
@@ -38,7 +39,7 @@ module.exports = {
             column: "e",
             colour: "white",
             denomination: "king",
-            castled: false
+            mayYetCastle: true
         },
 
         {
@@ -60,7 +61,7 @@ module.exports = {
             column: "h",
             colour: "white",
             denomination: "rook",
-            castled: false
+            mayYetCastle: true
         },
 
         {
@@ -125,7 +126,7 @@ module.exports = {
             column: "a",
             colour: "black",
             denomination: "rook",
-            castled: false
+            mayYetCastle: true
 
         },
 
@@ -155,7 +156,7 @@ module.exports = {
             column: "e",
             colour: "black",
             denomination: "king",
-            castled: false
+            mayYetCastle: true
         },
 
         {
@@ -177,7 +178,7 @@ module.exports = {
             column: "h",
             colour: "black",
             denomination: "rook",
-            castled: false
+            mayYetCastle: true
         },
 
 

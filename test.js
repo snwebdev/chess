@@ -16,6 +16,9 @@ var canCastleLongWhite = require('./func/canCastleLongWhite');
 var initialPositions = require('./initialPositions');
 
 var board = newGame2;
+
+console.log(makeMove(board,"white", "e1", "c1"))
+
 //board.pieces = initialPositions;
 
 
@@ -26,7 +29,7 @@ var board = newGame2;
 //console.log(movePutsMoverInCheck(board, "black","g7","g5"));
 //console.log(movePutsMoverInCheck(board, "black", "g7", "g5"))
 //console.log(isInCheck(board, "black"));
-console.log(canCastleLongWhite(board));
+//console.log(canCastleLongWhite(board));
 
 //console.log(board);
 

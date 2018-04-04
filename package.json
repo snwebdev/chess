@@ -13,4 +13,7 @@
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0"
   }
+  "engines": {
+    "node": "7.8.0  "
+  },
 }

@@ -2,10 +2,26 @@ var getPieceByPosition = require('./getPieceByPosition');
 var squareOccupied = require('./squareOccupied');
 var getLastMoveNumber = require('./notate/getLastMoveNumber');
 var moveChecksOpponent = require('./moveChecksOpponent');
+var isCastle = require('./isCastle');
+var castleLongOrShort = require('./castleLongOrShort');
+var notationAmbiguous = require('./notationAmbiguous');
+var getDisambiguation = require('./getDisambiguation');
+var disambiguation = "";
 
 
 module.exports = function (board, fromPosition, toPosition) {
     //console.log("top of notate move board.moves="+board.moves);
+
+    if(notationAmbiguous(board, fromPosition, toPosition)){
+        console.log("notation ambiguous "+fromPosition.column+fromPosition.row + " - "+toPosition.column+toPosition.row);
+        disambiguation = getDisambiguation(board, fromPosition, toPosition);
+    }else{
+        //console.log("notation nottttttttttttttt ambiguous");
+
+    }
+
+
+
     var piece = getPieceByPosition(board, fromPosition);
     var colour = piece.colour;
     var denomination;
@@ -37,10 +53,10 @@ module.exports = function (board, fromPosition, toPosition) {
 
     //if it takes
     if (squareOccupied(board, toPosition.column, toPosition.row)){
-        if(denomination === ""){
-            denomination = piece.column;
-        } else{
-        }
+        // if(denomination === ""){
+        //     denomination = piece.column;
+        // } else{
+        // }
 
         action = "x";
     }else{
@@ -68,31 +84,28 @@ module.exports = function (board, fromPosition, toPosition) {
         check = "+";
     }
 
+if (isCastle(board, fromPosition.column + fromPosition.row, toPosition.column+toPosition.row)){
+        var castle = castleLongOrShort(toPosition.column+toPosition.row)
+    if(castle === "short"){
+        board.moves +=
+            moveNumber
+            + dot
+        + " O-O"
+    }else{
+        board.moves +=
+            moveNumber
+            + dot
+            + " O-O-O"
+    }
+     return;
+}
 
-console.log("Action="+action);
-    // console.log("moveNumber ="+ moveNumber);
-    // console.log("dot ="+ dot);
-    // console.log("board.moves="+board.moves);
-    // console.log("lastMoveNumber ="+ lastMoveNumber);
-    // console.log("lastMoveNumber is intiger ="+ Number.isInteger(lastMoveNumber));
-    // console.log(lastMoveNumber > 0)
-    //
-    //
-    // console.log("to =" + toPosition.column+toPosition.row);
-    //
-    //
-    // console.log("notated move = "+
-    //  moveNumber +
-    // dot+
-    // denomination+
-    // toPosition.column+toPosition.row);
 
-     // board.moves += moveNumber+dot+denomination+toPosition.column+toPosition.row;
-    //console.log("board.meves before"+board.moves);
     board.moves +=
         moveNumber
         + dot
         + denomination
+        +disambiguation
         + action
         + toPosition.column+toPosition.row
     + check;

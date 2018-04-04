@@ -7,16 +7,24 @@ var canNotGetOutOfCheck = require('./canNotGetOutOfCheck');
 var winForColour = require('./winForColour');
 var inStalemate = require('./inStalemate');
 var draw = require('./draw');
+var isCastle = require('./isCastle');
+var castleLongOrShort = require('./castleLongOrShort');
+var getPieceBySquareName = require('./getPieceBySquareName');
 var opColour;
+var notateCastleShort = require('./notateCastleShort');
+var notateCastleLong = require('./notateCastleLong');
 
 
 var movingPiece;
 
 module.exports = function makeMove(board, colour, from, to) {
-    console.log("makeMove"+" "+colour + " "+ from+" "+ to)
+
+
+
     var fromPosition = getPositionFromSquareName(from);
     var toPosition = getPositionFromSquareName(to);
-    console.log("to = "+to);
+
+    notateMove(board, fromPosition, toPosition);
 
     movingPiece = getPieceByPosition(board, fromPosition);
     //is it  whitepawn promotion
@@ -24,22 +32,44 @@ module.exports = function makeMove(board, colour, from, to) {
         && toPosition.row === "8"
         && movingPiece.colour === "white") {
         board.state = "promotion";
-        board.promoPosition = toPosition;
-        notateMove(board, fromPosition, toPosition);
+       // board.promoPosition = toPosition;
+       // notateMove(board, fromPosition, toPosition);
         if (squareOccupiedByPosition(board, toPosition)) {
             var takenPiece = getPieceByPosition(board, toPosition);
             takenPiece.row = -1;
             takenPiece.column = -1;
         }
-
         movingPiece.column = toPosition.column;
         movingPiece.row = toPosition.row;
-
-
         return board;
     }
 
-    notateMove(board, fromPosition, toPosition);
+     //if castleing, move rook
+     if(isCastle(board, from, to)){
+        console.log("is castle..................");
+         var rook;
+         movingPiece.column = toPosition.column;
+         movingPiece.row = toPosition.row;
+         if(castleLongOrShort(to) === "short"){
+             rook = getPieceBySquareName(board, "h" + from.substring(1,2));
+             rook.column = "f";
+             //notateCastleShort(board);
+             // return;
+         }
+         if(castleLongOrShort(to) === "long"){
+             rook = getPieceBySquareName(board, "a" + from.substring(1,2));
+             rook.column = "d";
+             // notateCastleLong(board);
+             // return;
+         }
+         //
+         //
+         //
+         // }
+
+
+     }
+
 
     if (squareOccupiedByPosition(board, toPosition)) {
        var takenPiece = getPieceByPosition(board, toPosition);
@@ -48,11 +78,6 @@ module.exports = function makeMove(board, colour, from, to) {
     }
 
 
-
-
-    //board.moves += notatedMove;
-    //console.log(board.moves);
-
     movingPiece.column = toPosition.column;
     movingPiece.row = toPosition.row;
     if(movingPiece.denomination === "rook"){
@@ -60,6 +85,13 @@ module.exports = function makeMove(board, colour, from, to) {
     }
     if(movingPiece.denomination === "king"){
         movingPiece.mayYetCastle = false;
+        board.pieces.forEach((piece) => {
+            if(piece.colour === movingPiece.colour
+            && piece.denomination === "rook"){
+                piece.mayYetCastle = false;
+            }
+        })
+
     }
 
     //get opposite colour
@@ -71,6 +103,7 @@ module.exports = function makeMove(board, colour, from, to) {
         winForColour(board, colour);
         console.log(board.moves);
         console.log("GGGGGGGGAMMMMMEEEEEEEEEEE OVERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR win");
+        board.state = "ended";
         return board;
     }
 
@@ -87,7 +120,7 @@ module.exports = function makeMove(board, colour, from, to) {
 //console.log("makemove board="+JSON.stringify(board));
 
     //tell the display which square to empty
-    board.empty = fromPosition;
+   // board.empty = fromPosition;
 
     return (board);
 }

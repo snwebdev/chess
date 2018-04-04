@@ -8,6 +8,7 @@ var couldMoveKnight = require('./couldMoveKnight');
 // var movePutsMoverInCheck = require('./movePutsMoverInCheck');
 
 module.exports = function couldMove(board, colour, from, to){
+    //console.log(`could move ${colour} ${from} ${to}`)
 
     var piece = getPiece(board, from);
 

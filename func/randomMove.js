@@ -30,6 +30,7 @@ module.exports = function (board, colour) {
         var piece = pieces[i];
         if (piece.colour === colour && piece.row > -1) {
             relevantPieces.push(piece);
+            console.log(piece);
         }
     }
 
@@ -62,20 +63,7 @@ module.exports = function (board, colour) {
                 return makeMove(board, colour, randomPiece.column+randomPiece.row, randomDestination.column+randomDestination.row);
             }
 
-            // return board;
-            //
-            // return (
-            //     {
-            //         from: {
-            //             column: randomPiece.column,
-            //             row: randomPiece.row
-            //         },
-            //         to: {
-            //             column: randomDestination.column,
-            //             row: randomDestination.row
-            //         }
-            //     }
-            // );
+
 
         }
     }
