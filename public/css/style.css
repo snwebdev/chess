@@ -6,8 +6,8 @@ table {
 
 }
 td {
-    width: 43px;
-    height: 43px;
+    width: 42px;
+    height: 42px;
     padding: 0;
 }
 #new-game-btn{
@@ -35,6 +35,8 @@ td {
 
 .edge {
  background-color: white;
+    width: auto;
+    height: auto;
 }
 
 .white{
