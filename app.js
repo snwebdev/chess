@@ -46,7 +46,11 @@ app.post('/promote', function(req, res){
 });
 app.get('/newgame', function(req, res){
     res.json(newGame);
+});
+app.get('/test', function(req, res){
+    res.render('test');
 })
+
 
 
 app.listen(port, () => console.log("listening on port 3000"));

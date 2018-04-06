@@ -3,6 +3,7 @@ var nextClick = "from";
 var from, to;
 
 $(document).ready(function () {
+    setSquareSize();
     newGame();
     watchForToFromClicks();
 
@@ -10,6 +11,26 @@ $(document).ready(function () {
         newGame();
     });
 });
+
+function getRandomMove() {
+    $.ajax({
+        type: 'POST',
+        url: 'getrandommove',
+        data: JSON.stringify({board: board}),
+        contentType: "application/json",
+        success: function (data) {
+            board = data;
+
+            populateScreenBoard(board.pieces);
+            $("#moves").html(board.moves);
+
+        }
+    });
+}
+
+function getSquareName(element) {
+    return element.attr("data-column") + element.attr("data-row");
+}
 
 function newGame() {
     $.getJSON('newgame', function (data) {
@@ -23,18 +44,47 @@ function populateScreenBoard(pieces) {
     //empty screen board
     $(".black, .white").html("");
 
+    //return;
+
     //populate screen board
     pieces.forEach((piece) => {
         var row = piece.row;
         var column = piece.column;
         var colour = piece.colour;
-        var denomination = piece.denomination
-        $("td[data-column=" + column + "][data-row=" + row + "]").html("<div class=" + colour + "-" + denomination + "></div>");
+        var denomination = piece.denomination;
+        var piecepgn = `${colour}-${denomination}.png`;
+        $("td[data-column=" + column + "][data-row=" + row + "]").html(`<img src="/img/${piecepgn}">`);
     });
 }
 
-function getSquareName(element) {
-    return element.attr("data-column") + element.attr("data-row");
+function submitMove(from, to) {
+    $.ajax({
+        type: 'POST',
+        url: 'submitmove',
+        contentType: "application/json",
+        data: JSON.stringify({
+            board: board,
+            from: from,
+            to: to,
+        }),
+        success: function (data) {
+            if (data !== false) {
+                board = data;
+                populateScreenBoard(board.pieces);
+                if (board.state === "promotion") {
+                    promotion();
+                    watchForPromoClick();
+                } else {
+                    if (gameEnded()) {
+                        end();
+                    } else {
+                        getRandomMove();
+                    }
+
+                }
+            }
+        }
+    });
 }
 
 function watchForToFromClicks() {
@@ -55,60 +105,14 @@ function watchForToFromClicks() {
     });
 }
 
-function submitMove(from, to) {
-    $.ajax({
-        type: 'POST',
-        url: 'submitmove',
-        contentType: "application/json",
-        data: JSON.stringify({
-            board: board,
-            from: from,
-            to: to,
-        }),
-        success: function (data) {
-            if (data !== false) {
-                board = data;
-                populateScreenBoard(board.pieces);
-                if(board.state === "promotion"){
-                    promotion();
-                    watchForPromoClick();
-                }else{
-                    if(gameEnded()){
-                        end();
-                    }else{
-                        getRandomMove();
-                    }
-
-                }
-            }
-        }
-    });
-}
-
-function getRandomMove() {
-    $.ajax({
-        type: 'POST',
-        url: 'getrandommove',
-        data: JSON.stringify({board: board}),
-        contentType: "application/json",
-        success: function (data) {
-            board = data;
-
-
-            populateScreenBoard(board.pieces);
-            $("#notation").html(board.moves);
-
-        }
-    });
-}
 
 function promotion() {
-alert("promotion");
+    alert("promotion");
     $("#promo").css('visibility', 'visible');
     $(".black,.white").addClass("hover-off");
 }
 
-function watchForPromoClick(){
+function watchForPromoClick() {
     $(".promo").click(function () {
         var denomination = this.getAttribute("data-piece");
         $.ajax({
@@ -135,15 +139,34 @@ function watchForPromoClick(){
     });
 }
 
-function gameEnded(){
+function gameEnded() {
     return board.state === "ended";
 }
 
-function end(){
+function end() {
     $(".black,.white").addClass("hover-off");
 }
 
-function clearMoves(){
-$("#notation").html("");
+function clearMoves() {
+    $("#moves").html("");
+}
+
+function setSquareSize() {
+    // alert($('.navbar').height());
+    width = $(window).width();
+    height = $(window).height() - $('.navbar').height();
+    var limit;
+    if (height > width) {
+        limit = width
+    } else {
+        limit = height;
+    }
+    var squareSize = limit / 11;
+    $("td").css("height", squareSize + "px");
+    $("td").css('width', squareSize + "px");
+
+    $("#moves").css("height", squareSize * 7 + "px");
+    $("#moves").css("margin-top", squareSize + "px");
+
 }
 

@@ -12,11 +12,13 @@ var disambiguation = "";
 module.exports = function (board, fromPosition, toPosition) {
     //console.log("top of notate move board.moves="+board.moves);
 
-    if(notationAmbiguous(board, fromPosition, toPosition)){
+    if(notationAmbiguous(board, fromPosition, toPosition))
+    {console.log("notation ambiguous");
+
         console.log("notation ambiguous "+fromPosition.column+fromPosition.row + " - "+toPosition.column+toPosition.row);
         disambiguation = getDisambiguation(board, fromPosition, toPosition);
     }else{
-        //console.log("notation nottttttttttttttt ambiguous");
+        console.log("notation nottttttttttttttt ambiguous");
 
     }
 
