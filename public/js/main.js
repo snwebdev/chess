@@ -37,6 +37,7 @@ function newGame() {
         board = data;
         populateScreenBoard(board.pieces);
         clearMoves();
+        $("youWonModal").modal('show');
     });
 }
 
