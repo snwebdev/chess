@@ -7,6 +7,7 @@ var castleLongOrShort = require('./castleLongOrShort');
 var notationAmbiguous = require('./notationAmbiguous');
 var getDisambiguation = require('./getDisambiguation');
 var disambiguation = "";
+var canNotGetOutOfCheck = require('./canNotGetOutOfCheck');
 
 
 module.exports = function (board, fromPosition, toPosition) {
@@ -84,7 +85,8 @@ module.exports = function (board, fromPosition, toPosition) {
     var check = "";
     if (moveChecksOpponent(board, colour, fromPosition, toPosition)){
         check = "+";
-    }
+        }
+
 
 if (isCastle(board, fromPosition.column + fromPosition.row, toPosition.column+toPosition.row)){
         var castle = castleLongOrShort(toPosition.column+toPosition.row)

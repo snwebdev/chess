@@ -6,15 +6,15 @@ module.exports = {
     rows: ["1", "2", "3", "4", "5", "6", "7", "8"],
     pieces: [
         {
-            row: "7",
-            column: "h",
-            colour: "white",
-            denomination: "pawn",
+            row: "8",
+            column: "a",
+            colour: "black",
+            denomination: "king",
             mayYetCastle: true
         },
 
         {
-            row: "8",
+            row: "1",
             column: "f",
             colour: "white",
             denomination: "king",
@@ -25,9 +25,16 @@ module.exports = {
 
         {
             row: "1",
-            column: "c",
-            colour: "black",
-            denomination: "king",
+            column: "h",
+            colour: "white",
+            denomination: "rook",
+            mayYetCastle: true
+        },
+        {
+            row: "7",
+            column: "g",
+            colour: "white",
+            denomination: "rook",
             mayYetCastle: true
         }
 

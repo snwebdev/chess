@@ -3,13 +3,15 @@ var nextClick = "from";
 var from, to;
 
 $(document).ready(function () {
-    setSquareSize();
+    setInterval(setSquareSize, 500);
     newGame();
     watchForToFromClicks();
 
     $("#new-game-btn").click(function () {
         newGame();
     });
+
+
 });
 
 function getRandomMove() {
@@ -22,7 +24,7 @@ function getRandomMove() {
             board = data;
 
             populateScreenBoard(board.pieces);
-            $("#moves").html(board.moves);
+
 
         }
     });
@@ -37,15 +39,33 @@ function newGame() {
         board = data;
         populateScreenBoard(board.pieces);
         clearMoves();
-        $("youWonModal").modal('show');
     });
+}
+
+function gameEndModal(board){
+    var message = "";
+    switch(board.result){
+        case "white":
+            message = "You Won!";
+        break;
+        case "stalemate":
+            message = "Stalemate!";
+            break;
+        case "black":
+            message = "You Lost!";
+            break;
+    }
+
+    $("#result-modal-message").html(message);
+    $("#resultModal").modal("show");
 }
 
 function populateScreenBoard(pieces) {
     //empty screen board
     $(".black, .white").html("");
 
-    //return;
+    //populate moves
+    $("#moves").html(board.moves);
 
     //populate screen board
     pieces.forEach((piece) => {
@@ -77,7 +97,8 @@ function submitMove(from, to) {
                     watchForPromoClick();
                 } else {
                     if (gameEnded()) {
-                        end();
+                        gameEndModal(board);
+                        // end();
                     } else {
                         getRandomMove();
                     }

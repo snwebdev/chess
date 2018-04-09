@@ -100,10 +100,12 @@ module.exports = function makeMove(board, colour, from, to) {
 
     // is in check and can't get out?
     if (isInCheck(board, opColour) && canNotGetOutOfCheck(board, opColour)) {
+        board.moves += "+";
         winForColour(board, colour);
         console.log(board.moves);
         console.log("GGGGGGGGAMMMMMEEEEEEEEEEE OVERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR win");
         board.state = "ended";
+        board.result = "white";
         return board;
     }
 
@@ -113,6 +115,7 @@ module.exports = function makeMove(board, colour, from, to) {
         draw(board);
         console.log(board.moves);
         console.log("GGGGGGGGAMMMMMEEEEEEEEEEE OVERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR stalemate");
+        board.result = "stalemate";
         return board;
     }
 

@@ -45,7 +45,7 @@ app.post('/promote', function(req, res){
     res.json(promotePawn(req.body.board, req.body.denomination));
 });
 app.get('/newgame', function(req, res){
-    res.json(newGame);
+    res.json(newGame2);
 });
 app.get('/test', function(req, res){
     res.render('test');
