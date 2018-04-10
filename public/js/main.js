@@ -145,7 +145,6 @@ function promotion() {
 function watchForPromoClick() {
     $(".promo").click(function () {
         var denomination = this.getAttribute("data-piece");
-        alert(denomination);
         $.ajax({
             type: 'POST',
             url: 'promote',

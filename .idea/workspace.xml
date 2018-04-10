@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="778d36f3-3060-4e17-aa2b-75a52b3c03ec" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" afterPath="$PROJECT_DIR$/public/js/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,21 +19,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="47" column="20" lean-forward="true" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
+            <state relative-caret-position="149">
+              <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="194" column="31" lean-forward="false" selection-start-line="194" selection-start-column="31" selection-end-line="194" selection-end-column="31" />
+            <state relative-caret-position="282">
+              <caret line="146" column="59" lean-forward="false" selection-start-line="146" selection-start-column="59" selection-end-line="146" selection-end-column="59" />
               <folding>
                 <element signature="n#!!block;n#getSquareName#0" expanded="false" />
                 <element signature="n#!!block;n#newGame#0" expanded="false" />
@@ -43,8 +43,8 @@
                 <element signature="n#!!block;n#watchForToFromClicks#0" expanded="false" />
                 <element signature="e#3329#3553#0" expanded="false" />
                 <element signature="n#!!block;n#promotion#0" expanded="false" />
-                <element signature="n#!!block;n#watchForPromoClick#0" expanded="false" />
                 <element signature="n#!!block;n#clearMoves#0" expanded="false" />
+                <element signature="n#!!block;n#setSquareSize#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -203,9 +203,9 @@
         <option value="$PROJECT_DIR$/func/notateMove.js" />
         <option value="$PROJECT_DIR$/func/newGame2.js" />
         <option value="$PROJECT_DIR$/views/home.handlebars" />
-        <option value="$PROJECT_DIR$/public/js/main.js" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/public/js/main.js" />
       </list>
     </option>
   </component>
@@ -396,12 +396,12 @@
       <workItem from="1523013407386" duration="1567000" />
       <workItem from="1523023574082" duration="4961000" />
       <workItem from="1523029414710" duration="1488000" />
-      <workItem from="1523276198515" duration="21678000" />
+      <workItem from="1523276198515" duration="21778000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="323399000" />
+    <option name="totallyTimeSpent" value="323499000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-4" width="1920" height="1084" extended-state="6" />
@@ -880,25 +880,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="194" column="31" lean-forward="false" selection-start-line="194" selection-start-column="31" selection-end-line="194" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!block;n#getSquareName#0" expanded="false" />
-            <element signature="n#!!block;n#newGame#0" expanded="false" />
-            <element signature="n#!!block;n#gameEndModal#0" expanded="false" />
-            <element signature="n#!!block;n#populateScreenBoard#0" expanded="false" />
-            <element signature="n#!!block;n#submitMove#0" expanded="false" />
-            <element signature="n#!!block;n#watchForToFromClicks#0" expanded="false" />
-            <element signature="e#3329#3553#0" expanded="false" />
-            <element signature="n#!!block;n#promotion#0" expanded="false" />
-            <element signature="n#!!block;n#watchForPromoClick#0" expanded="false" />
-            <element signature="n#!!block;n#clearMoves#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
@@ -909,9 +890,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="47" column="20" lean-forward="true" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
+        <state relative-caret-position="149">
+          <caret line="34" column="23" lean-forward="true" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="146" column="59" lean-forward="false" selection-start-line="146" selection-start-column="59" selection-end-line="146" selection-end-column="59" />
+          <folding>
+            <element signature="n#!!block;n#getSquareName#0" expanded="false" />
+            <element signature="n#!!block;n#newGame#0" expanded="false" />
+            <element signature="n#!!block;n#gameEndModal#0" expanded="false" />
+            <element signature="n#!!block;n#populateScreenBoard#0" expanded="false" />
+            <element signature="n#!!block;n#submitMove#0" expanded="false" />
+            <element signature="n#!!block;n#watchForToFromClicks#0" expanded="false" />
+            <element signature="e#3329#3553#0" expanded="false" />
+            <element signature="n#!!block;n#promotion#0" expanded="false" />
+            <element signature="n#!!block;n#clearMoves#0" expanded="false" />
+            <element signature="n#!!block;n#setSquareSize#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
