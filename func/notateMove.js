@@ -11,18 +11,6 @@ var canNotGetOutOfCheck = require('./canNotGetOutOfCheck');
 
 
 module.exports = function (board, fromPosition, toPosition) {
-    //console.log("top of notate move board.moves="+board.moves);
-
-    if(notationAmbiguous(board, fromPosition, toPosition))
-    {console.log("notation ambiguous");
-
-        console.log("notation ambiguous "+fromPosition.column+fromPosition.row + " - "+toPosition.column+toPosition.row);
-        disambiguation = getDisambiguation(board, fromPosition, toPosition);
-    }else{
-        console.log("notation nottttttttttttttt ambiguous");
-
-    }
-
 
 
     var piece = getPieceByPosition(board, fromPosition);
@@ -56,10 +44,10 @@ module.exports = function (board, fromPosition, toPosition) {
 
     //if it takes
     if (squareOccupied(board, toPosition.column, toPosition.row)){
-        // if(denomination === ""){
-        //     denomination = piece.column;
-        // } else{
-        // }
+        if(denomination === ""){
+            denomination = piece.column;
+        } else{
+        }
 
         action = "x";
     }else{
