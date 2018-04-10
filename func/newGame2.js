@@ -45,7 +45,7 @@ module.exports = {
             enPassant: true
         },
         {
-            row: "4",
+            row: "6",
             column: "f",
             colour: "white",
             denomination: "pawn",

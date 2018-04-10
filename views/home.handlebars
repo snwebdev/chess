@@ -1,27 +1,4 @@
-<!--<div class="modal fade" id="youWonModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-    <!--<div class="modal-dialog" role="document">-->
 
-        <!--<div class="modal-content">-->
-            <!--&lt;!&ndash;<div class="modal-header">&ndash;&gt;-->
-                <!--&lt;!&ndash;&lt;!&ndash;<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>&ndash;&gt;&ndash;&gt;-->
-                <!--&lt;!&ndash;<button type="button" class="close" data-dismiss="modal" aria-label="Close">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span aria-hidden="true">&times;</span>&ndash;&gt;-->
-                <!--&lt;!&ndash;</button>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--<div>-->
-                <!--<div class="container text-center">-->
-                    <!--<h2>You won!</h2>-->
-
-                    <!--<button type="button" class=".modal-btn btn btn-primary float-right" data-dismiss="modal">Close</button>-->
-
-                <!--</div>-->
-              <!--</div>-->
-
-
-
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
 
 <div id="resultModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -41,16 +18,27 @@
         </div>
     </div>
 </div>
-<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#youWonModal">-->
-    <!--Launch demo modal-->
-<!--</button>-->
+
+
+
+
 <div class="container">
+    <div class="row">
+        <table id="promo">
+            <tr>
+                <td class="promo white-queen" data-piece="queen"></td>
+                <td class="promo white-rook" data-piece="rook"></td>
+                <td class="promo white-bishop" data-piece="bishop"></td>
+                <td class="promo white-knight" data-piece="knight"></td>
+            </tr>
+        </table>
+    </div>
     <div class="row">
             <div id="board" class="col-sm-8">
                 <table class="float-right">
                     <tr>
                         <td class="edge top"></td>
-                        <td class="edge top  a"></td>
+                        <td class="edge top a"></td>
                         <td class="edge top b"></td>
                         <td class="edge top c"></td>
                         <td class="edge top d"></td>

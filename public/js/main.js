@@ -137,7 +137,7 @@ function watchForToFromClicks() {
 }
 
 function promotion() {
-    alert("promotion");
+    //alert("promotion");
     $("#promo").css('visibility', 'visible');
     $(".black,.white").addClass("hover-off");
 }
@@ -145,6 +145,7 @@ function promotion() {
 function watchForPromoClick() {
     $(".promo").click(function () {
         var denomination = this.getAttribute("data-piece");
+        alert(denomination);
         $.ajax({
             type: 'POST',
             url: 'promote',
