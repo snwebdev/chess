@@ -3,6 +3,7 @@ var nextClick = "from";
 var from, to;
 
 $(document).ready(function () {
+    setSquareSize();
     setInterval(setSquareSize, 500);
     newGame();
     watchForToFromClicks();
@@ -12,6 +13,8 @@ $(document).ready(function () {
     });
 
 
+
+    $("body").fadeIn("slow");
 });
 
 function getRandomMove() {
@@ -61,8 +64,10 @@ function gameEndModal(board){
 }
 
 function populateScreenBoard(pieces) {
+
+    console.log(board);
     //empty screen board
-    $(".black, .white").html("");
+    $(".black, .white").removeClass("white-pawn white-knight white-bishop white-queen white-king black-pawn black-knight black-bishop black-queen black-king");
 
     //populate moves
     $("#moves").html(board.moves);
@@ -74,7 +79,11 @@ function populateScreenBoard(pieces) {
         var colour = piece.colour;
         var denomination = piece.denomination;
         var piecepgn = `${colour}-${denomination}.png`;
-        $("td[data-column=" + column + "][data-row=" + row + "]").html(`<img src="/img/${piecepgn}">`);
+       // $("td[data-column=" + column + "][data-row=" + row + "]").html(`<img src="/img/${piecepgn}">`);
+        // $("td[data-column=" + column + "][data-row=" + row + "]").html('<div class="' + colour + '-' + denomination + '"></div>');
+        $("td[data-column=" + column + "][data-row=" + row + "]").addClass(`${colour}-${denomination}`);
+
+        // $("td[data-column=" + column + "][data-row=" + row + "]").html('asd');
     });
 }
 
@@ -126,7 +135,6 @@ function watchForToFromClicks() {
 
     });
 }
-
 
 function promotion() {
     alert("promotion");

@@ -13,6 +13,8 @@ var getPieceBySquareName = require('./getPieceBySquareName');
 var opColour;
 var notateCastleShort = require('./notateCastleShort');
 var notateCastleLong = require('./notateCastleLong');
+var getLesserColumn = require('./getLesserColumn');
+var getGreaterColumn = require('./getGreaterColumn');
 
 
 var movingPiece;
@@ -27,6 +29,7 @@ module.exports = function makeMove(board, colour, from, to) {
     notateMove(board, fromPosition, toPosition);
 
     movingPiece = getPieceByPosition(board, fromPosition);
+
     //is it  whitepawn promotion
     if (movingPiece.denomination === "pawn"
         && toPosition.row === "8"
@@ -43,6 +46,51 @@ module.exports = function makeMove(board, colour, from, to) {
         movingPiece.row = toPosition.row;
         return board;
     }
+
+    //pawn moves two
+    if (movingPiece.denomination === "pawn"){
+        if(movingPiece.colour == "white"
+        && fromPosition.row === 2
+        && toPosition.row === 4){
+            movingPiece.enPassant = true;
+        }
+        if(movingPiece.colour == "black"
+            && fromPosition.row === 7
+            && toPosition.row === 5){
+            movingPiece.enPassant = true;
+        }
+    }
+
+    //pawn takes en passant
+        //takes in greater column
+    if (movingPiece.colour === "white"
+        && toPosition.column === getGreaterColumn(board,fromPosition.column)
+        && getPieceBySquareName(board, toPosition.column+ (toPosition.row - 1)).enPassant){
+        var captured = getPieceBySquareName(board, toPosition.column+ (toPosition.row - 1));
+        captured.column = -1;
+        captured.row = -1;
+    };
+    if (movingPiece.colour === "white"
+        && toPosition.column === getLesserColumn(board,fromPosition.column)
+        && getPieceBySquareName(board, toPosition.column+ (toPosition.row - 1)).enPassant){
+        var captured = getPieceBySquareName(board, toPosition.column+ (toPosition.row - 1));
+        captured.column = -1;
+        captured.row = -1;
+    };
+    if (movingPiece.colour === "black"
+        && toPosition.column === getGreaterColumn(board,fromPosition.column)
+        && getPieceBySquareName(board, toPosition.column+ (toPosition.row + 1)).enPassant){
+        var captured = getPieceBySquareName(board, toPosition.column+ (toPosition.row + 1));
+        captured.column = -1;
+        captured.row = -1;
+    };
+    if (movingPiece.colour === "black"
+        && toPosition.column === getLesserColumn(board,fromPosition.column)
+        && getPieceBySquareName(board, toPosition.column+ (toPosition.row + 1)).enPassant){
+        var captured = getPieceBySquareName(board, toPosition.column+ (toPosition.row + 1));
+        captured.column = -1;
+        captured.row = -1;
+    };
 
      //if castleing, move rook
      if(isCastle(board, from, to)){
@@ -97,6 +145,16 @@ module.exports = function makeMove(board, colour, from, to) {
     //get opposite colour
     colour == "white" ? opColour = "black" : opColour = "white";
 
+    //turn off any opposite colour en passant pawns
+    board.pieces.forEach((piece) => {
+        if(piece.colour === opColour
+        && piece.denomination === "pawn"){
+            piece.enPassant = false;
+        }
+    });
+
+
+
 
     // is in check and can't get out?
     if (isInCheck(board, opColour) && canNotGetOutOfCheck(board, opColour)) {
@@ -120,10 +178,7 @@ module.exports = function makeMove(board, colour, from, to) {
     }
 
 
-//console.log("makemove board="+JSON.stringify(board));
 
-    //tell the display which square to empty
-   // board.empty = fromPosition;
 
     return (board);
 }

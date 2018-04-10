@@ -25,7 +25,7 @@ module.exports = {
 
         {
             row: "1",
-            column: "h",
+            column: "b",
             colour: "white",
             denomination: "rook",
             mayYetCastle: true
@@ -36,6 +36,20 @@ module.exports = {
             colour: "white",
             denomination: "rook",
             mayYetCastle: true
+        },
+        {
+            row: "4",
+            column: "e",
+            colour: "black",
+            denomination: "pawn",
+            enPassant: true
+        },
+        {
+            row: "4",
+            column: "f",
+            colour: "white",
+            denomination: "pawn",
+            enPassant: true
         }
 
     ]

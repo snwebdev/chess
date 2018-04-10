@@ -1,5 +1,6 @@
 #moves{
     border: 1px solid black;
+    overflow: scroll;
 }
 #board{
 
@@ -14,6 +15,7 @@ table {
 }
 
 td {
+    background-size: 100%;
 }
 
 
@@ -26,17 +28,13 @@ img{
 margin-top: 5%;
 }
 
-.edge {
- background-color: white;
+.edge{
+    background-position:center;
+    background-size:25%;
+    background-repeat: no-repeat;
 }
 
-.edge img {
 
-    display:block;
-    margin: 0 auto;
-    height: 35%;
-
-}
 
 .white{
     background-color: #EDE7E7;
@@ -65,6 +63,92 @@ margin-top: 5%;
 
 .black:hover, .white:hover {
     background-color: #6995E6;
+}
+.white-pawn{
+    background-image: url("../img/white-pawn.png");
+}
+.white-knight{
+    background-image: url("../img/white-knight.png");
+}
+.white-bishop{
+    background-image: url("../img/white-bishop.png");
+}
+.white-rook{
+    background-image: url("../img/white-rook.png");
+}
+.white-queen{
+    background-image: url("../img/white-queen.png");
+}
+.white-king{
+    background-image: url("../img/white-king.png");
+}
+
+.black-pawn{
+    background-image: url("../img/black-pawn.png");
+}
+.black-knight{
+    background-image: url("../img/black-knight.png");
+}
+.black-bishop{
+    background-image: url("../img/black-bishop.png");
+}
+.black-rook{
+    background-image: url("../img/black-rook.png");
+}
+.black-queen{
+    background-image: url("../img/black-queen.png");
+}
+.black-king{
+    background-image: url("../img/black-king.png");
+}
+
+.a{
+    background-image: url("../img/a.png");
+}
+.b{
+    background-image: url("../img/b.png");
+}
+.c{
+    background-image: url("../img/c.png");
+}
+.d{
+    background-image: url("../img/d.png");
+}
+.e{
+    background-image: url("../img/e.png");
+}
+.f{
+    background-image: url("../img/f.png");
+}
+.g{
+    background-image: url("../img/g.png");
+}
+.h{
+    background-image: url("../img/h.png");
+}
+.n1{
+    background-image: url("../img/1.png");
+}
+.n2{
+    background-image: url("../img/2.png");
+}
+.n3{
+    background-image: url("../img/3.png");
+}
+.n4{
+    background-image: url("../img/4.png");
+}
+.n5{
+    background-image: url("../img/5.png");
+}
+.n6{
+    background-image: url("../img/6.png");
+}
+.n7{
+    background-image: url("../img/7.png");
+}
+.n8{
+    background-image: url("../img/8.png");
 }
 
 

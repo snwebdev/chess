@@ -1,5 +1,6 @@
 var getColumnAndRowFromSquareName = require('./getColumnAndRowFromSquareName');
 var getPieceColourFromPosition = require('./getPieceColourFromPosition');
+var getPieceBySquareName = require('./getPieceBySquareName');
 var getPositionPiecePositionFromPiece = require('./getPositionPiecePositionFromPiece');
 var squareOccupied = require('./squareOccupied');
 var getLesserColumn = require('./getLesserColumn');
@@ -47,6 +48,36 @@ module.exports = function legalMovePawn(board, colour, from, to) {
         return (!squareOccupied(board, toPosition.column, toPosition.row) &&
             !squareOccupied(board, toPosition.column, toPosition.row));
     }
+    // takes en passant in greater column
+    if (colour === "white"
+        && toPosition.column === getGreaterColumn(board,fromPosition.column)
+        && toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 1]
+        && !squareOccupied(board, toPosition.column, toPosition.row)
+        && getPieceBySquareName(board, toPosition.column+ (toPosition.row - 1)).enPassant){
+        return true};
+
+    if (colour === "white"
+        && toPosition.column === getLesserColumn(board,fromPosition.column)
+        && toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 1]
+        && !squareOccupied(board, toPosition.column, toPosition.row)
+        && getPieceBySquareName(board, toPosition.column+ (toPosition.row - 1)).enPassant){
+        return true};
+
+    if (colour === "black"
+        && toPosition.column === getGreaterColumn(board,fromPosition.column)
+        && toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) -1]
+        && !squareOccupied(board, toPosition.column, toPosition.row)
+        && getPieceBySquareName(board, toPosition.column + (toPosition.row + 1)).enPassant){
+        return true};
+    if (colour === "black"
+        && toPosition.column === getLesserColumn(board,fromPosition.column)
+        && toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) -1]
+        && !squareOccupied(board, toPosition.column, toPosition.row)
+        && getPieceBySquareName(board, toPosition.column + (toPosition.row + 1)).enPassant){
+        return true}
+
+
+
 
     // take in lesser column
     if (
@@ -80,6 +111,8 @@ module.exports = function legalMovePawn(board, colour, from, to) {
         return (getPieceByPosition(board, toPosition).colour === "white");
     }
 
-    //wasn't any of the legal moves
+
+    //wasn't any of the above legal moves legal moves
     return false;
+
 }
