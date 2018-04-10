@@ -192,7 +192,7 @@ function setSquareSize() {
     } else {
         limit = height;
     }
-    var squareSize = limit / 11;
+    var squareSize = limit / 12;
     $("td").css("height", squareSize + "px");
     $("td").css('width', squareSize + "px");
 
