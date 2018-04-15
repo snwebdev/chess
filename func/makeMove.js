@@ -50,13 +50,13 @@ module.exports = function makeMove(board, colour, from, to) {
     //pawn moves two
     if (movingPiece.denomination === "pawn"){
         if(movingPiece.colour == "white"
-        && fromPosition.row === 2
-        && toPosition.row === 4){
+        && fromPosition.row === "2"
+        && toPosition.row === "4"){
             movingPiece.enPassant = true;
         }
         if(movingPiece.colour == "black"
-            && fromPosition.row === 7
-            && toPosition.row === 5){
+            && fromPosition.row === "7"
+            && toPosition.row === "5"){
             movingPiece.enPassant = true;
         }
     }

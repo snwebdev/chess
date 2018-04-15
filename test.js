@@ -17,7 +17,7 @@ var initialPositions = require('./initialPositions');
 
 var board = newGame2;
 
-console.log(makeMove(board,"white", "e1", "c1"))
+//console.log(makeMove(board,"white", "e1", "c1"))
 
 //board.pieces = initialPositions;
 
@@ -32,6 +32,7 @@ console.log(makeMove(board,"white", "e1", "c1"))
 //console.log(canCastleLongWhite(board));
 
 //console.log(board);
+console.log(couldMove(board, "black", "c4", "d3"));
 
 
 

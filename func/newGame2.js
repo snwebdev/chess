@@ -31,25 +31,23 @@ module.exports = {
             mayYetCastle: true
         },
         {
-            row: "7",
+            row: "2",
             column: "g",
             colour: "white",
             denomination: "rook",
-            mayYetCastle: true
+            mayYetCastle: false
         },
         {
             row: "4",
-            column: "e",
+            column: "c",
             colour: "black",
-            denomination: "pawn",
-            enPassant: true
+            denomination: "pawn"
         },
         {
-            row: "6",
-            column: "f",
+            row: "4",
+            column: "d",
             colour: "white",
-            denomination: "pawn",
-            enPassant: true
+            denomination: "pawn"
         }
 
     ]

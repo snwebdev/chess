@@ -32,13 +32,14 @@ module.exports = function legalMovePawn(board, colour, from, to) {
 
     // move two forward
     if (
+
         colour === "white" &&
         toPosition.column === fromPosition.column &&
         toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 2] &&
         fromPosition.row === "2"
     ) {
         return (!squareOccupied(board, toPosition.column, toPosition.row) &&
-            !squareOccupied(board, toPosition.column, toPosition.row -1));
+            !squareOccupied(board, toPosition.column, board.rows[board.rows.indexOf(toPosition.row) - 1]));
     }
     if (colour === "black" &&
         toPosition.column === fromPosition.column &&
@@ -46,34 +47,36 @@ module.exports = function legalMovePawn(board, colour, from, to) {
         fromPosition.row === "7"
     ) {
         return (!squareOccupied(board, toPosition.column, toPosition.row) &&
-            !squareOccupied(board, toPosition.column, toPosition.row));
+            !squareOccupied(board, toPosition.column, board.rows[board.rows.indexOf(toPosition.row) + 1]));
     }
     // takes en passant in greater column
     if (colour === "white"
         && toPosition.column === getGreaterColumn(board,fromPosition.column)
         && toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 1]
         && !squareOccupied(board, toPosition.column, toPosition.row)
-        && getPieceBySquareName(board, toPosition.column+ (toPosition.row - 1)).enPassant){
-        return true};
-
-    if (colour === "white"
-        && toPosition.column === getLesserColumn(board,fromPosition.column)
-        && toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 1]
-        && !squareOccupied(board, toPosition.column, toPosition.row)
-        && getPieceBySquareName(board, toPosition.column+ (toPosition.row - 1)).enPassant){
+        && getPieceBySquareName(board, toPosition.column + board.rows[board.rows.indexOf(toPosition.row) - 1]).enPassant){
         return true};
 
     if (colour === "black"
         && toPosition.column === getGreaterColumn(board,fromPosition.column)
         && toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) -1]
         && !squareOccupied(board, toPosition.column, toPosition.row)
-        && getPieceBySquareName(board, toPosition.column + (toPosition.row + 1)).enPassant){
+        && getPieceBySquareName(board, toPosition.column + board.rows[board.rows.indexOf(toPosition.row) + 1]).enPassant){
         return true};
+
+    //takes en passant in lesser column
+    if (colour === "white"
+        && toPosition.column === getLesserColumn(board,fromPosition.column)
+        && toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) + 1]
+        && !squareOccupied(board, toPosition.column, toPosition.row)
+        && getPieceBySquareName(board, toPosition.column+ board.rows[board.rows.indexOf(toPosition.row) - 1]).enPassant){
+        return true};
+
     if (colour === "black"
         && toPosition.column === getLesserColumn(board,fromPosition.column)
         && toPosition.row === board.rows[board.rows.indexOf(fromPosition.row) -1]
         && !squareOccupied(board, toPosition.column, toPosition.row)
-        && getPieceBySquareName(board, toPosition.column + (toPosition.row + 1)).enPassant){
+        && getPieceBySquareName(board, toPosition.column + board.rows[board.rows.indexOf(toPosition.row) + 1]).enPassant){
         return true}
 
 
