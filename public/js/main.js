@@ -67,7 +67,7 @@ function populateScreenBoard(pieces) {
 
     console.log(board);
     //empty screen board
-    $(".black, .white").removeClass("white-pawn white-knight white-bishop white-rook white-queen white-king black-pawn black-knight black-bishop black-queen black-king");
+    $(".black, .white").removeClass("white-pawn white-knight white-bishop white-rook white-queen white-king black-pawn black-knight black-bishop black-rook black-queen black-king");
 
     //populate moves
     $("#moves").html(board.moves);
