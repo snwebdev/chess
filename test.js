@@ -1,4 +1,4 @@
-var emptyBoard = require('./emptyBoard');
+//var emptyBoard = require('./emptyBoard');
 var couldMove = require('./func/couldMove');
 var makeMove = require('./func/makeMove');
 var randomMove = require('./func/randomMove');
@@ -13,7 +13,8 @@ console.log("chess");
 var canCastleShortWhite = require('./func/canCastleShortWhite');
 var canCastleLongWhite = require('./func/canCastleLongWhite');
 
-var initialPositions = require('./initialPositions');
+//var initialPositions = require('./initialPositions');
+var getLastMoveNumber = require('./func/notate/getLastMoveNumber');
 
 var board = newGame2;
 
@@ -32,7 +33,8 @@ var board = newGame2;
 //console.log(canCastleLongWhite(board));
 
 //console.log(board);
-console.log(couldMove(board, "black", "c4", "d3"));
+//console.log(couldMove(board, "black", "c4", "d3"));
+console.log(getLastMoveNumber("9.a4 Bc3 19.asdad"));
 
 
 
