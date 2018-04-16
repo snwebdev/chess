@@ -1,0 +1,3 @@
+use "#" for mate
+check that it checks for check after promotion
+remove + from "e8+=Q" and put it after promotion
